@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oui & Petits — Animation enfants pour mariages</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --cream:#faf7f2;
+      --green:#3d5a47;
+      --gold:#b8924a;
+      --rose:#f5ede6;
+      --rose-dark:#c9846a;
+      --text:#2a2420;
+      --text-light:#6b5a52;
+    }
+
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:1rem 4rem;
+
+      background:rgba(255,255,255,0.9);
+      backdrop-filter:blur(10px);
+
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+
+    .logo-container{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .nav-logo{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.8rem;
+      color:var(--green);
+      font-weight:600;
+    }
+
+    .nav-logo span{
+      color:var(--gold);
+    }
+
+    .nav-sub{
+      font-size:0.7rem;
+      color:#8f8177;
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:2rem;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:var(--text-light);
+      font-size:0.85rem;
+      transition:0.2s;
+    }
+
+    nav a:hover{
+      color:var(--gold);
+    }
+
+    .nav-btn{
+      background:var(--green);
+      color:white !important;
+      padding:0.7rem 1.2rem;
+      border-radius:999px;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      padding-top:80px;
+    }
+
+    .hero-left{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+
+      padding:5rem;
+    }
+
+    .hero-tag{
+      background:#f3e5d4;
+      color:var(--gold);
+      padding:0.5rem 1rem;
+      border-radius:999px;
+      width:fit-content;
+      font-size:0.75rem;
+      margin-bottom:2rem;
+    }
+
+    .hero h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:1.5rem;
+      font-weight:300;
+    }
+
+    .hero h1 em{
+      color:var(--green);
+    }
+
+    .hero p{
+      font-size:1rem;
+      line-height:1.8;
+      color:var(--text-light);
+      max-width:500px;
+      margin-bottom:2rem;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      background:var(--green);
+      color:white;
+      text-decoration:none;
+      padding:1rem 1.8rem;
+      border-radius:999px;
+      transition:0.2s;
+    }
+
+    .btn-primary:hover{
+      background:var(--gold);
+    }
+
+    .btn-secondary{
+      border:1px solid #ddd;
+      color:var(--text);
+      text-decoration:none;
+      padding:1rem 1.8rem;
+      border-radius:999px;
+    }
+
+    .hero-right{
+      background:linear-gradient(135deg,var(--green),#57755f);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-right::before{
+      content:'🎈';
+      position:absolute;
+      font-size:8rem;
+      opacity:0.08;
+      top:10%;
+      left:10%;
+    }
+
+    .hero-right::after{
+      content:'✨';
+      position:absolute;
+      font-size:8rem;
+      opacity:0.08;
+      bottom:10%;
+      right:10%;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(10px);
+      padding:2rem;
+      border-radius:1.5rem;
+      color:white;
+      text-align:center;
+      width:320px;
+    }
+
+    .hero-card h3{
+      font-size:2rem;
+      margin-bottom:1rem;
+      font-family:'Cormorant Garamond',serif;
+      font-weight:400;
+    }
+
+    .hero-card p{
+      color:rgba(255,255,255,0.8);
+      line-height:1.7;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:6rem 4rem;
+    }
+
+    .section-tag{
+      color:var(--gold);
+      margin-bottom:1rem;
+      font-size:0.8rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .section-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:3rem;
+      font-weight:300;
+      margin-bottom:2rem;
+    }
+
+    .section-title em{
+      color:var(--green);
+    }
+
+    /* STORY */
+
+    .story-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:4rem;
+      align-items:center;
+    }
+
+    .story p{
+      line-height:1.9;
+      color:var(--text-light);
+      margin-bottom:1rem;
+    }
+
+    .story-box{
+      background:white;
+      padding:2rem;
+      border-radius:1.5rem;
+      box-shadow:0 10px 40px rgba(0,0,0,0.05);
+    }
+
+    /* CARDS */
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1.5rem;
+      margin-top:3rem;
+    }
+
+    .card{
+      background:white;
+      padding:2rem;
+      border-radius:1.5rem;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+      transition:0.2s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card h3{
+      margin:1rem 0;
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.5rem;
+    }
+
+    .card p{
+      color:var(--text-light);
+      line-height:1.7;
+    }
+
+    /* PROCESS */
+
+    .process{
+      background:var(--green);
+      color:white;
+    }
+
+    .process .section-title em{
+      color:#f2d8bf;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:2rem;
+      margin-top:3rem;
+    }
+
+    .step{
+      text-align:center;
+    }
+
+    .step-number{
+      width:60px;
+      height:60px;
+      margin:auto;
+      margin-bottom:1rem;
+      border-radius:50%;
+      background:rgba(255,255,255,0.15);
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      font-size:1.5rem;
+      font-family:'Cormorant Garamond',serif;
+    }
+
+    .step p{
+      color:rgba(255,255,255,0.7);
+      line-height:1.7;
+    }
+
+    /* PRICING */
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2rem;
+      margin-top:3rem;
+    }
+
+    .price-box{
+      background:white;
+      padding:2.5rem;
+      border-radius:1.5rem;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .price-main{
+      background:var(--green);
+      color:white;
+    }
+
+    .price-main p{
+      color:rgba(255,255,255,0.8);
+    }
+
+    .price{
+      font-size:3rem;
+      font-family:'Cormorant Garamond',serif;
+      margin:1rem 0;
+    }
+
+    ul{
+      margin-top:1rem;
+      padding-left:1rem;
+    }
+
+    li{
+      margin-bottom:0.8rem;
+      line-height:1.6;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      background:var(--rose);
+      text-align:center;
+    }
+
+    .contact p{
+      max-width:700px;
+      margin:auto;
+      line-height:1.9;
+      color:var(--text-light);
+      margin-bottom:2rem;
+    }
+
+    .whatsapp{
+      display:inline-block;
+      background:#25D366;
+      color:white;
+      text-decoration:none;
+      padding:1rem 2rem;
+      border-radius:999px;
+      font-size:1rem;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#1f1f1f;
+      color:rgba(255,255,255,0.7);
+      text-align:center;
+      padding:2rem;
+      font-size:0.9rem;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      nav{
+        flex-direction:column;
+        gap:1rem;
+        padding:1rem;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:1rem;
+      }
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .hero-left{
+        padding:3rem 1.5rem;
+      }
+
+      .hero h1{
+        font-size:3rem;
+      }
+
+      section{
+        padding:4rem 1.5rem;
+      }
+
+      .story-grid{
+        grid-template-columns:1fr;
+      }
+
+      .pricing-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+
+    <div class="logo-container">
+      <div class="nav-logo">Oui <span>&</span> Petits</div>
+      <div class="nav-sub">Basés à Nevers (58)</div>
+    </div>
+
+    <ul>
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#pourquoi">Pourquoi nous</a></li>
+      <li><a href="#organisation">Organisation</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#contact" class="nav-btn">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-left">
+
+      <span class="hero-tag">
+        ✦ Animation enfants pour mariages
+      </span>
+
+      <h1>
+        Vos enfants <em>heureux,</em><br>
+        vos invités<br>
+        apaisés.
+      </h1>
+
+      <p>
+        Basés à Nevers (58), nous sommes deux animateurs diplômés spécialisés dans l’animation enfants pour mariages — afin que vous puissiez profiter pleinement de votre soirée pendant que les plus petits s’amusent en toute sécurité.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="https://wa.me/33620791276" class="btn-primary">
+          📱 Nous contacter
+        </a>
+
+        <a href="#organisation" class="btn-secondary">
+          Voir comment ça marche
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-right">
+
+      <div class="hero-card">
+        <h3>Oui & Petits</h3>
+
+        <p>
+          Deux animateurs diplômés pour encadrer les enfants durant votre mariage avec bienveillance, sécurité et bonne humeur.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STORY -->
+
+  <section class="story" id="histoire">
+
+    <p class="section-tag">✦ Notre histoire</p>
+
+    <h2 class="section-title">
+      Une idée née d'une <em>vraie expérience</em>
+    </h2>
+
+    <div class="story-grid">
+
+      <div>
+
+        <p>
+          Oui & Petits est né d’une idée simple : rendre l’animation enfants accessible lors des mariages sans faire exploser le budget.
+        </p>
+
+        <p>
+          Tout a commencé lorsque des proches cherchaient des animateurs pour leur mariage. Les tarifs proposés étaient souvent trop élevés.
+        </p>
+
+        <p>
+          Étant tous les deux animateurs diplômés et habitués aux écoles et accueils de loisirs, nous avons décidé de créer Oui & Petits afin de proposer un service de qualité avec deux animateurs présents.
+        </p>
+
+      </div>
+
+      <div class="story-box">
+
+        <h3 style="margin-bottom:1rem;">
+          💛 Notre mission
+        </h3>
+
+        <p>
+          Permettre aux parents, aux invités et aux mariés de profiter pleinement du plus beau jour de leur vie pendant que les enfants passent eux aussi une soirée inoubliable.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- WHY -->
+
+  <section id="pourquoi">
+
+    <p class="section-tag">✦ Pourquoi nous choisir</p>
+
+    <h2 class="section-title">
+      Une soirée plus <em>sereine</em>
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>👥 Deux animateurs</h3>
+        <p>
+          Deux personnes présentes pour assurer un encadrement optimal.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🎓 Diplômés</h3>
+        <p>
+          Expérience professionnelle en écoles et accueils de loisirs.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🎨 Activités adaptées</h3>
+        <p>
+          Jeux et animations adaptés aux enfants dès 3 ans.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>💶 Tarif accessible</h3>
+        <p>
+          Une prestation pensée pour rester abordable malgré le coût d’un mariage.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROCESS -->
+
+  <section class="process" id="organisation">
+
+    <p class="section-tag">✦ Organisation</p>
+
+    <h2 class="section-title">
+      Comment ça fonctionne ?
+    </h2>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Premier contact</h3>
+        <p>
+          Vous nous contactez sur WhatsApp pour discuter de votre mariage.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Organisation</h3>
+        <p>
+          Nous échangeons sur vos attentes et le déroulement de la soirée.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Visite du lieu</h3>
+        <p>
+          Nous découvrons le lieu 1 à 2 semaines avant le mariage.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Le jour J</h3>
+        <p>
+          Nous nous occupons des enfants pendant que vous profitez pleinement.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PRICING -->
+
+  <section id="tarifs">
+
+    <p class="section-tag">✦ Nos tarifs</p>
+
+    <h2 class="section-title">
+      Un prix <em>clair</em> et accessible
+    </h2>
+
+    <div class="pricing-grid">
+
+      <div class="price-box">
+
+        <h3>Tarif indicatif</h3>
+
+        <div class="price">
+          400€ – 700€
+        </div>
+
+        <ul>
+          <li>Nombre d’enfants</li>
+          <li>Durée de la prestation</li>
+          <li>Frais kilométriques</li>
+          <li>Besoins spécifiques</li>
+        </ul>
+
+      </div>
+
+      <div class="price-box price-main">
+
+        <h3>Inclus dans chaque prestation</h3>
+
+        <div class="price">
+          ✔
+        </div>
+
+        <ul>
+          <li>Deux animateurs diplômés</li>
+          <li>Visite du lieu</li>
+          <li>Organisation personnalisée</li>
+          <li>Animations pour enfants</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <p class="section-tag">
+      ✦ Nous contacter
+    </p>
+
+    <h2 class="section-title">
+      Parlons de votre mariage
+    </h2>
+
+    <p>
+      Contactez-nous directement sur WhatsApp afin d’échanger sur votre mariage, le nombre d’enfants présents et vos attentes.
+    </p>
+
+    <a href="https://wa.me/33620791276" class="whatsapp">
+      💬 WhatsApp — 06 20 79 12 76
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    Oui & Petits — Animation enfants pour mariages — Nevers (58)
+  </footer>
+
+</body>
+</html>
